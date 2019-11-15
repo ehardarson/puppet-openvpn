@@ -134,6 +134,14 @@ define openvpn::ca (
     require            => File["${etc_directory}/openvpn/${name}"],
   }
 
+  file { "${etc_directory}/openvpn/${name}/easy-rsa/easyrsa":
+    ensure  => present,
+    mode    => '0755',
+    group   => 0,
+    source  => "file:${openvpn::easyrsa_source}/easyrsa",
+    require => File["${etc_directory}/openvpn/${name}"],
+  }
+
   file { "${etc_directory}/openvpn/${name}/easy-rsa/revoked":
     ensure  => directory,
     mode    => '0750',
