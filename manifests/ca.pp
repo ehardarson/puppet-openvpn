@@ -138,7 +138,7 @@ define openvpn::ca (
     ensure  => present,
     mode    => '0755',
     group   => 0,
-    source  => "file:${openvpn::easyrsa_source}/easyrsa",
+    source  => "file:${openvpn::params::easyrsa_source}/easyrsa",
     require => File["${etc_directory}/openvpn/${name}"],
   }
 
